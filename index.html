@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everafter Academy - Double Your Business</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #5c5c5c;
+            background-color: #fff9f9;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .tabs {
+            display: flex;
+            background-color: #f8f0f0;
+            overflow: hidden;
+            border-bottom: 1px solid #e8d5d5;
+        }
+        
+        .tab-btn {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 16px 20px;
+            transition: 0.3s;
+            font-size: 16px;
+            color: #9c7c7c;
+            flex: 1;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .tab-btn:hover {
+            background-color: #f0e6e6;
+            color: #d4a6a6;
+        }
+        
+        .tab-btn.active {
+            background-color: #fff;
+            color: #d4a6a6;
+            border-bottom: 2px solid #d4a6a6;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 40px 20px;
+            animation: fadeEffect 1s;
+        }
+        
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #d4a6a6;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .cta-button:hover {
+            background-color: #c08e8e;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #9c7c7c;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background-color: #d4a6a6;
+        }
+        
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: #9c7c7c;
+        }
+        
+        .calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .event {
+            background-color: white;
+            border-radius: 5px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #f0e6e6;
+            transition: transform 0.3s;
+        }
+        
+        .event:hover {
+            transform: translateY(-5px);
+        }
+        
+        .event-date {
+            color: #d4a6a6;
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .event-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #9c7c7c;
+        }
+        
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .review {
+            background-color: white;
+            border-radius: 5px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #f0e6e6;
+            position: relative;
+        }
+        
+        .review:before {
+            content: """;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-family: 'Playfair Display', serif;
+            font-size: 60px;
+            color: #f8f0f0;
+            z-index: 0;
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+        }
+        
+        .review-author {
+            font-weight: 500;
+            color: #9c7c7c;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .review-business {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 5px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #f0e6e6;
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #f8f0f0;
+        }
+        
+        .team-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #9c7c7c;
+        }
+        
+        .team-role {
+            color: #d4a6a6;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .mission {
+            background-color: white;
+            padding: 50px;
+            border-radius: 5px;
+            margin: 60px auto;
+            max-width: 900px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #f0e6e6;
+            position: relative;
+        }
+        
+        .mission:before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid #f0e6e6;
+            border-radius: 5px;
+            z-index: -1;
+        }
+        
+        .feature-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .feature-box {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #f0e6e6;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-box h3 {
+            margin-bottom: 20px;
+            color: #d4a6a6;
+            position: relative;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .feature-box h3:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 1px;
+            background-color: #f0e6e6;
+        }
+        
+        footer {
+            background-color: #9c7c7c;
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 80px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #f0e6e6;
+        }
+        
+        .divider {
+            width: 100px;
+            height: 1px;
+            background-color: #d4a6a6;
+            margin: 60px auto;
+        }
+        
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #d4a6a6;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        
+        .scroll-top.visible {
+            opacity: 0.8;
+        }
+        
+        .scroll-top:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">EVERAFTER ACADEMY</div>
+            <div class="tagline">Where Business Transformation Happens</div>
+        </div>
+    </header>
+    
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'Home')">Home</button>
+        <button class="tab-btn" onclick="openTab(event, 'Calendar')">Calendar Events</button>
+        <button class="tab-btn" onclick="openTab(event, 'Reviews')">Success Stories</button>
+        <button class="tab-btn" onclick="openTab(event, 'About')">Who We Are</button>
+    </div>
+    
+    <div id="Home" class="tab-content" style="display: block;">
+        <div class="hero">
+            <h1>Double Your Business With Proven Strategies</h1>
+            <p>Join Everafter Academy's exclusive mastermind community and courses. Learn from entrepreneurs who have walked your path and achieved extraordinary success.</p>
+            <a href="#" class="cta-button">Join Our Next Session</a>
+        </div>
+        
+        <div class="container">
+            <h2>Transform Your Business Journey</h2>
+            
+            <div class="feature-boxes">
+                <div class="feature-box">
+                    <h3>Masterminds</h3>
+                    <p>Connect with like-minded entrepreneurs in our structured mastermind groups. Share challenges, receive feedback, and accelerate your growth with peer support.</p>
+                </div>
+                
+                <div class="feature-box">
+                    <h3>Proven Courses</h3>
+                    <p>Access our library of actionable courses created by entrepreneurs who have successfully scaled their businesses and overcome the same challenges you face today.</p>
+                </div>
+                
+                <div class="feature-box">
+                    <h3>Real Results</h3>
+                    <p>Our members consistently report doubling their business within 12 months of implementing our strategies. No fluff, just proven methods that work.</p>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h3>Your Business Deserves to Flourish</h3>
+                <p>At Everafter Academy, we believe every business has the potential for remarkable growth. Our proven methodologies, supportive community, and expert guidance create the perfect environment for transformation.</p>
+                <a href="#" class="cta-button" style="margin-top: 20px;">Learn More About Our Approach</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="Calendar" class="tab-content">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            
+            <div class="calendar">
+                <div class="event">
+                    <div class="event-date">April 20, 2025</div>
+                    <div class="event-title">Mastermind Intensive Weekend</div>
+                    <p>Join us for an immersive weekend of strategic planning, peer feedback, and breakthrough sessions. Limited to 20 participants for maximum impact.</p>
+                    <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">Reserve Your Spot</a>
+                </div>
+                
+                <div class="event">
+                    <div class="event-date">May 5, 2025</div>
+                    <div class="event-title">Sales Funnel Optimization Workshop</div>
+                    <p>Learn how to double your conversion rates with our proven funnel optimization techniques. This 3-hour virtual workshop includes live website reviews.</p>
+                    <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">Register Now</a>
+                </div>
+                
+                <div class="event">
+                    <div class="event-date">May 15, 2025</div>
+                    <div class="event-title">Launch of "Double Your Business" Spring Cohort</div>
+                    <p>Our flagship 12-week program begins with a new cohort. Experience personalized coaching, actionable strategies, and a supportive community.</p>
+                    <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">Apply Today</a>
+                </div>
+                
+                <div class="event">
+                    <div class="event-date">June 10, 2025</div>
+                    <div class="event-title">Client Acquisition Masterclass</div>
+                    <p>Discover the exact strategies our most successful members use to attract high-value clients consistently, even in competitive markets.</p>
+                    <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">Save Your Seat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="Reviews" class="tab-content">
+        <div class="container">
+            <h2>Success Stories from Our Community</h2>
+            
+            <div class="reviews">
+                <div class="review">
+                    <div class="review-text">"Within 8 months of implementing Everafter Academy's strategies, we doubled our monthly revenue and reduced our working hours by 15%. The mastermind sessions were particularly valuable for getting past our scaling challenges."</div>
+                    <div class="review-author">Sarah Johnson</div>
+                    <div class="review-business">Founder, Bright Path Marketing</div>
+                </div>
+                
+                <div class="review">
+                    <div class="review-text">"I was skeptical about another business course, but Everafter Academy is different. They provide real, actionable advice from people who've been there. My client list has grown by 127% in just one year."</div>
+                    <div class="review-author">Michael Chen</div>
+                    <div class="review-business">CEO, InnoTech Solutions</div>
+                </div>
+                
+                <div class="review">
+                    <div class="review-text">"The community alone is worth the investment. Having access to other entrepreneurs who understand your challenges and can offer solutions based on experience has been invaluable. We've tripled our business in 18 months."</div>
+                    <div class="review-author">Amanda Rodriguez</div>
+                    <div class="review-business">Owner, Wellness Revolution</div>
+                </div>
+                
+                <div class="review">
+                    <div class="review-text">"What sets Everafter apart is that they don't just teach theory - they show you exactly how to implement. My small team has grown to 15 people and we've opened two new locations since joining."</div>
+                    <div class="review-author">David Thompson</div>
+                    <div class="review-business">Founder, Urban Fitness Collective</div>
+                </div>
+                
+                <div class="review">
+                    <div class="review-text">"After years of struggling to break $200K in revenue, I implemented Everafter's client acquisition strategy and hit $450K the following year. The step-by-step guidance made all the difference."</div>
+                    <div class="review-author">Jessica Martinez</div>
+                    <div class="review-business">Principal, JM Design Studio</div>
+                </div>
+                
+                <div class="review">
+                    <div class="review-text">"The accountability and structure of the mastermind groups transformed how I approach my business. We've doubled our profit margins and I finally have work-life balance."</div>
+                    <div class="review-author">Robert Kim</div>
+                    <div class="review-business">CEO, Streamline Logistics</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="About" class="tab-content">
+        <div class="container">
+            <h2>Who We Are</h2>
+            
+            <div class="mission">
+                <h3 style="text-align: center; margin-bottom: 25px;">Our Mission</h3>
+                <p>At Everafter Academy, we believe entrepreneurship shouldn't be a lonely struggle. Our mission is to provide business owners with the real-world strategies, supportive community, and actionable guidance needed to double their business without doubling their workload.</p>
+                <p>Unlike theoretical business courses, our content comes exclusively from entrepreneurs who have successfully built and scaled businesses themselves. We focus on practical implementation rather than overwhelming you with information.</p>
+            </div>
+            
+            <h3 style="text-align: center; margin: 60px 0 30px;">Our Team of Experts</h3>
+            
+            <div class="team">
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Team member photo" class="team-photo">
+                    <div class="team-name">Jennifer Michaels</div>
+                    <div class="team-role">Founder & Lead Coach</div>
+                    <p>After scaling her own business to 7 figures in under 3 years, Jennifer created Everafter Academy to help others achieve similar transformations.</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Team member photo" class="team-photo">
+                    <div class="team-name">Marcus Bennett</div>
+                    <div class="team-role">Marketing Strategist</div>
+                    <p>Marcus has helped over 200 businesses implement client acquisition systems that consistently generate qualified leads.</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Team member photo" class="team-photo">
+                    <div class="team-name">Alisha Patel</div>
+                    <div class="team-role">Scaling Specialist</div>
+                    <p>With experience scaling three different businesses, Alisha guides members through the challenges of growth and team building.</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Team member photo" class="team-photo">
+                    <div class="team-name">Carlos Rodriguez</div>
+                    <div class="team-role">Systems Expert</div>
+                    <p>Carlos helps business owners create efficient systems that allow for growth without burnout or quality issues.</p>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <h3>Ready to Transform Your Business?</h3>
+                <p style="max-width: 700px; margin: 0 auto 30px;">Join our community of ambitious entrepreneurs who are implementing proven strategies to double their business.</p>
+                <a href="#" class="cta-button">Schedule a Discovery Call</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="scroll-top" onclick="scrollToTop()">↑</div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Programs</a>
+                <a href="#">Events</a>
+                <a href="#">Success Stories</a>
+                <a href="#">Contact</a>
+            </div>
+            <p>&copy; 2025 Everafter Academy. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
+        // Add scroll to top functionality
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+            var scrollTop = document.querySelector(".scroll-top");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTop.classList.add("visible");
+            } else {
+                scrollTop.classList.remove("visible");
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
